@@ -1,7 +1,8 @@
-package com.emsib.mvvmdemoapp
+package com.emsib.mvvmdemoapp.screen.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.emsib.mvvmdemoapp.R
 
 class MainActivity : AppCompatActivity() {
 
