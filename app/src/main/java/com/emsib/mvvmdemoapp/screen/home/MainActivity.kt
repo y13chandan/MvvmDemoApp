@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mViewModel = ViewModelProviders.of(this, factory).get(HomeViewModel::class.java)
         binding?.mViewModel = mViewModel
+        binding?.lifecycleOwner = this
         mViewModel.getPosts()
         setObservers()
     }
