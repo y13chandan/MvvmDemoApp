@@ -18,7 +18,8 @@
             android:id="@+id/rv_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         <include
             layout="@layout/progress_bar"
@@ -27,7 +28,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:show="@{mViewModel.showProgress}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
