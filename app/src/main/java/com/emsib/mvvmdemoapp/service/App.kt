@@ -5,9 +5,9 @@ import com.emsib.mvvmdemoapp.network.ApiCalls
 import com.emsib.mvvmdemoapp.network.NetworkConnectionInterceptor
 import com.emsib.mvvmdemoapp.repository.HomeRepository
 import com.emsib.mvvmdemoapp.screen.home.HomeViewModelFactory
+import com.google.gson.Gson
 import org.kodein.di.Kodein.Companion.lazy
 import org.kodein.di.KodeinAware
-import com.google.gson.Gson
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
