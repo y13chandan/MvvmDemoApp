@@ -3,6 +3,9 @@ package com.emsib.mvvmdemoapp.screen.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.emsib.mvvmdemoapp.models.DataWrapper
+import com.emsib.mvvmdemoapp.models.Failed
+import com.emsib.mvvmdemoapp.models.Success
+import com.emsib.mvvmdemoapp.models.UiState
 import com.emsib.mvvmdemoapp.repository.HomeRepository
 import com.emsib.mvvmdemoapp.util.Coroutines
 
@@ -10,16 +13,16 @@ class HomeViewModel(
     private val repository: HomeRepository
 ): ViewModel() {
     val progress = MutableLiveData<Boolean>()
-    val posts = MutableLiveData<DataWrapper>()
+    val posts = MutableLiveData<UiState>()
 
     fun getPosts() {
         progress.value = true
         Coroutines.main {
             try {
-                posts.value = DataWrapper(repository.getPosts(), null)
+                posts.value = Success(repository.getPosts())
                 progress.value = false
             } catch (e: Exception) {
-                posts.value = DataWrapper(null, e.message)
+                e.message?.let { posts.value = Failed(it) }
                 progress.value = false
             }
         }

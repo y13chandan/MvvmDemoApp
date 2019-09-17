@@ -7,8 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.emsib.mvvmdemoapp.R
 import com.emsib.mvvmdemoapp.databinding.ActivityMainBinding
-import com.emsib.mvvmdemoapp.models.DataWrapper
-import com.emsib.mvvmdemoapp.models.Post
+import com.emsib.mvvmdemoapp.models.*
 import com.emsib.mvvmdemoapp.util.checkItemsAre
 import com.emsib.mvvmdemoapp.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -35,10 +34,10 @@ class MainActivity : AppCompatActivity(), KodeinAware {
     }
 
     private fun setObservers() {
-        mViewModel.posts.observe(this, Observer<DataWrapper> {t ->
-            when(t?.error) {
-                null ->  { t?.data?.checkItemsAre<Post>()?.let { rv_main.adapter = HomeAdapter(it) } }
-                else -> toast(t.error)
+        mViewModel.posts.observe(this, Observer<UiState> {t ->
+            when(t) {
+                is Success ->  t.data.checkItemsAre<Post>()?.let { rv_main.adapter = HomeAdapter(it) }
+                is Failed -> toast(t.error)
             }
         })
     }
