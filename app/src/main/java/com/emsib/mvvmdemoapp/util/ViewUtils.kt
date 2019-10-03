@@ -77,3 +77,6 @@ fun ViewGroup.inflate(layoutId: Int): View {
     return LayoutInflater.from(context).inflate(layoutId, this, false)
 }
 
+fun Number.roundTo(numFractionDigits: Int) = String.format("%.${numFractionDigits}f", toDouble())
+
+
